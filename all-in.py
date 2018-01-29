@@ -8,7 +8,7 @@ from plugins.huobi.HuobiServices import get_balance, send_order
 
 COIN1 = 'lun'.lower()
 COIN2 = 'eth'.lower()
-MIN_NUM = 780
+MIN_NUM = 5
 
 
 def get_tote(coin):
@@ -25,7 +25,7 @@ def get_tote(coin):
 def get_price(symbol):
     addr = 'https://api.huobi.pro/market/trade?symbol={symbol}'
     resp_json = requests.get(addr.format(symbol=symbol)).text
-    if 'invalid' not in resp_json:
+    if 'null' not in resp_json:
         resp_dict = json.loads(resp_json)
         sell_price = resp_dict['tick']['data'][0]['price']
         return '%f' % sell_price
@@ -36,7 +36,7 @@ def get_price(symbol):
 def cal_num(coin1, coin2='eth'):
     coin1_price = get_price(coin1 + coin2)
     if coin1_price == '0':
-        print('\033[1;32m [价格查询] {} 未上币，请继续等待 ...\033[0m'.format(coin1))
+        print('价格查询>> {} 未上币，请继续等待 ...'.format(coin1))
         return '0'
     else:
         coin1_price = float(get_price(coin1 + coin2))
@@ -61,8 +61,8 @@ def all_in(coin1, coin2):
 
 def task():
     while all_in(COIN1, COIN2)['status'] != 'ok':
-        print('\033[34;1m [当前任务] 探测 {} 购买 {}  ...\033[0m'.format(COIN2, COIN1))
-    print('\033[36;1m 已经买到，程序退出... \033[0m')
+        print('当前任务>> 探测 {} 购买 {}  ...'.format(COIN2, COIN1))
+    print('已经买到，程序退出... ')
     return
 
 

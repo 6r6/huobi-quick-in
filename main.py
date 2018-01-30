@@ -38,7 +38,7 @@ def get_price(symbol):
 def buy_market(coin1, coin2, coin1_max_price, coin2_amount):
     coin1_price = float(get_price(coin1 + coin2))
     if coin1_price < coin1_max_price:
-        resp_dict = send_order(amount=coin2_amount, source='', symbol=coin1 + coin2, _type='buy-market')
+        resp_dict = send_order(amount=str(coin2_amount), source='', symbol=coin1 + coin2, _type='buy-market')
         return resp_dict
     else:
         return {'status': 'err'}

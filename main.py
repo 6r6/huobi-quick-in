@@ -8,9 +8,9 @@ from plugins.huobi.HuobiServices import get_balance, send_order
 
 
 COIN1 = 'zla'.lower()
-COIN2 = 'eth'.lower()
-COIN1_PRICE = 0.0005
-COIN2_AMOUNT = 0.5
+COIN2 = 'btc'.lower()
+COIN1_PRICE = 6.78e-5
+COIN2_AMOUNT = 0.01
 
 
 def get_tote(coin):
@@ -37,7 +37,7 @@ def get_price(symbol):
 
 def buy_market(coin1, coin2, coin1_max_price, coin2_amount):
     coin1_price = float(get_price(coin1 + coin2))
-    if coin1_price < coin1_max_price:
+    if 0 < coin1_price < coin1_max_price:
         resp_dict = send_order(amount=str(coin2_amount), source='', symbol=coin1 + coin2, _type='buy-market')
         return resp_dict
     else:

@@ -67,7 +67,7 @@ def task():
                 print('订单追踪>> 已经买入，任务完成')
                 break
         else:
-            print('当前进度>> 暂未上币...')
+            print('当前进度>> 暂未上币，或价格不符...')
 
 
 if __name__ == '__main__':

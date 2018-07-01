@@ -1,6 +1,6 @@
 # 上币监测、限价买入
 
-[![Build Status](https://travis-ci.org/se4/huobi-quick-in.svg?branch=master)](https://travis-ci.org/6r6/huobi-quick-in)
+[![Build Status](https://travis-ci.org/6r6/huobi-quick-in.svg?branch=master)](https://travis-ci.org/6r6/huobi-quick-in)
 
 概括：Python3脚本持续监测huobi.pro的REST-API，在新币开放交易的时候快速买入
 
